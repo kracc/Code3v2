@@ -1,0 +1,128 @@
+
+#cabecera {
+    width: 100%;
+    background-image:url("/public/img/with love from.png");
+    height: 400px;
+        }
+        
+.header {
+    width: 100%;
+    background-image:url("/public/img/with love from.png");
+}
+
+.display-4 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.centrar-contenido-div {
+    margin: 1rem;
+    padding: 8rem;
+    text-align: center;
+  }
+  .form-label-group > input, .form-label-group > label {
+    height: 3.125rem;
+    padding: .75rem;
+}
+body{
+    padding: 0;
+    margin: 0;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; 
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow "color: #fafafa" .15s ease-in-out;
+}
+body, html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #2f3542;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* No Scrollbar */
+    overflow: hidden;
+}
+
+.form-box {
+    width: 350px;
+    height: 100%;
+    padding: 40px;
+    background: #191919;
+    text-align: center;
+    align-items: center;
+}
+
+.form-title {
+    color:rgb(197, 165, 133);
+    text-transform: uppercase;
+    font-weight: 30;
+}
+
+.form-box input[type="text"], .form-box input[type="password"], .form-box button[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid green;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: rgb(197, 165, 133);
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.form-box input[type="text"]:focus, .form-box input[type="password"]:focus {
+    width: 280px;
+    border-color: rgb(197, 165, 133);
+    color:rgb(197, 165, 133);
+}
+
+.form-box button[type="submit"] {
+    border: 0;
+    background: green;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid green;
+    padding: 14px 40px;
+    outline: none;
+    color: rgb(197, 165, 133);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.form-box button[type="submit"]:hover {
+    background: none;
+}
+.colorLink{
+    color: green;
+}

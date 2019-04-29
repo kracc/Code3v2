@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta id="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Bootstrap core CSS -->
+    <!-- Custom styles for this template -->
+    <link href="floating-labels.css" rel="stylesheet">
+  </head>
+  <body>
+ 
+ <form id = "formulario-registro" class="form-box animated bounce" autocomplete="off">
+   
+    <img class="" src="img/Picture1.png" alt="" width="72" height="72">
+    <br>
+    <h1 class="form-title">Registro CODE 3</h1>
+    <input id="correo" type="text" placeholder="Correo" autofocus>
+    <input id="nombre" type="text" placeholder="Nombre" >
+    <input id="contrasena" type="password" placeholder="Contraseña">
+    <input id="contrasenarep" type="password" placeholder="Repetir contraseña">
+    <button id="boton-registro" >
+        Registar
+    </button>
+    <div class="alert alert-danger" role="alert" id= "alerta">
+      Correo de usuario ya existente.
+    </div>
+    <div class="alert alert-success" role="alert" id= "alerta-verde">
+      Usuario creado exitosamente.
+    </div>
+    <a class="colorLink" href="http://" target="_blank" rel="noopener noreferrer">Ya tengo una cuenta</a>
+</form>
+
+<script src="jQuery/jquery-3.4.0.min.js"></script>
+<script src="js/controlador-registro.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</body>
+</html>

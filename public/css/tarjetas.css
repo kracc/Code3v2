@@ -1,0 +1,15 @@
+
+.card-title {
+    background:transparent;
+    margin-bottom: .75rem;
+    
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0 !important;
+
+}
+.card{
+    border: none !important;
+}
