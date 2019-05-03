@@ -1,38 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dash</title>
-  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/inicio.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id"
+    content="261033829274-ian1d7p7sckvkt2cpas78pj23qoatfub.apps.googleusercontent.com">
+  <style>
+    .img {
+      width: 80px;
+      height: 80px;
+    }
+  </style>
 </head>
 
 <body>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>Menú</h2>
     <ul>
-      <!-- no ok -->
-      <li class=""><a class="delLista" href="">Inicio</a></li>
       <!-- ok -->
+      <hr style="border: 3px solid #444; border-radius: 300px/10px; height: 0px; text-align: center;">
+      <li class=""><a class="delLista" href="">Inicio</a></li>
+      <!-- no ok -->
       <li class=""><a class="delLista" id="modal1" href="#exampleModal" data-toggle="modal"
           data-target="#exampleModal">Crear</a></li>
-      <!-- en proceso real -->
-      <li class=""><a class="delLista" href="/inicio/Inicio.html"><span>Proyectos</span></a></li>
+      <!-- no ok -->
+      <li class=""><a class="delLista" id="enlace-proyectos">Proyectos</a></li>
+      <!-- no ok -->
+      <li class=""><a class="delLista" id="enlace-p">Compartidos</a></li>
+      <!-- no ok -->
+      <li class=""><a class="delLista" id="modal4" href="#exampleModal4" data-toggle="modal"
+          data-target="#exampleModal4">Perfil</a></li>
       <!-- no ok -->
       <li class=""><a class="delLista" id="modal2" href="#exampleModa2-1" data-toggle="modal"
           data-target="#exampleModa2-1">Cuenta</a></li>
-      <!-- no ok -->
+      <!-- ok -->
       <li class=""><a class="delLista" id="modal3" href="#exampleModal3" data-toggle="modal"
           data-target="#exampleModal3">Cerrar sesión</a></li>
+      <hr style="border: 3px solid #444; border-radius: 300px/10px; height: 0px; text-align: center;">
     </ul>
     <!-- Relleno del sidebar -->
     <div class="resto"></div>
@@ -47,24 +58,25 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="background:green;">
         <div class="modal-header  modalitos">
-          <h3 class="modal-title " id="exampleModalLabel" style="color:green; margin-left:29%;">Nuevo proyecto</h3>
+          <h3 class="modal-title " id="exampleModalLabel" style="color:white; margin-left:29%;">Nuevo proyecto</h3>
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
 
         </div>
         <div class="modal-body  modalitos">
-          <form method="POST" id="creare">
+          <form method="POST" id="creare" autocomplete="off">
             <div class="form-group">
-              <input type="text" name="nombre" style="text-align:center; color:green;" class="form-control nombre"
-                id="validationDefault01 recipient-name " placeholder="Nombre" autofocus required >
+              <input type="text" name="nombre" id="nombre" style="text-align:center; color:white;"
+                class="form-control nombre" id="validationDefault01 recipient-name " placeholder="Nombre">
             </div>
             <div class="form-group">
+
+
               <textarea name="descripcion" class="form-control yo descripcion" id="validationDefault02 message-text"
-                placeholder="Descripción" style="resize: none; text-align:center; color:green;" required></textarea>
+                placeholder="Descripción" style="resize: none; text-align:center; color:white;"></textarea>
             </div>
             <div class="modal-footer  modalitos">
-
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-success">Agregar</button>
+              <button type="submit" class="btn btn-success">Agregar</button>
             </div>
           </form>
         </div>
@@ -79,16 +91,16 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="background:green;">
         <div class="modal-header  modalitos">
-          <h3 class="modal-title" id="exampleModalLabel2-1" style="color:green; margin-left:29%;">Actulizar cuenta</h3>
+          <h3 class="modal-title" id="exampleModalLabel2-1" style="color:white; margin-left:29%;">Actulizar cuenta</h3>
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
         </div>
         <div class="modal-body  modalitos">
-          <form>
+          <form autocomplete="off">
             <div class="form-group">
               <img src="img/Visa-MasterCard-1024x393.png" style="margin-left:29%">
               <p style="color:antiquewhite">Actualmente tiene una cuenta tipo libre para cambiar esto puede pasar a la
                 version de premium por un modico precio de $ 20.00</p>
-              <input type="text" style="text-align:center; color:green;" class="form-control" id="recipient-name"
+              <input type="text" style="text-align:center; color:white;" class="form-control" id="recipient-name"
                 placeholder="Ingrese el numero de su tarjeta" autofocus>
             </div>
           </form>
@@ -102,6 +114,35 @@
   </div>
   <!-- /# Modal de cuenta cuando esta en modo free -->
 
+  <!-- Modal de administrar perfil -->
+  <div class="modal fade oculto" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4"
+    aria-hidden="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background:green;">
+        <div class="modal-header  modalitos">
+          <h3 class="modal-title" id="exampleModalLabel2-2" style="color:white; margin-left:29% ;">Actualizar Perfil
+          </h3>
+          <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
+        </div>
+        <div class="modal-body  modalitos">
+          <form autocomplete="off" id="form-actualizar" >
+            <div class="form-group group">
+              <input type="text" id="nombreUsuario" name="nombre" placeholder="Nombre Usuario">
+              <input type="text" id="correoUsuario" name="correo" placeholder="Correo">
+              <input type="password" id="contrasenaActual" name="contrasenaActual" placeholder="Contraseña actual">
+              <input type="password" id="contrasenaNueva" name="nuevaContrasena" placeholder="Nueva contraseña">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer  modalitos">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
+          <button type="button" id="actualizar" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#Modal de administrar perfil-->
+
   <!-- Modal de cuenta cuando esta modo pago -->
   <div class="modal fade oculto" id="exampleModa2-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2-2"
     aria-hidden="false">
@@ -112,15 +153,15 @@
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
         </div>
         <div class="modal-body  modalitos">
-          <form>
-            <div class="form-group">
+          <form autocomplete="off" class="formPerfil">
+            <div class="form-group ">
               <p style="color:antiquewhite">Actualmente tienes una cuenta tipo premium puedes relajarte y programar un
                 poco.</p>
             </div>
           </form>
         </div>
         <div class="modal-footer  modalitos">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Actualizar</button>
         </div>
       </div>
     </div>
@@ -145,6 +186,16 @@
         <div class="modal-footer  modalitos">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No aún no</button>
           <button type="button" class="btn btn-success"><a href="/logout">Cerrar Sesión</a> </button>
+          <a onclick="signOut();">Sign out</a>
+          <script>
+            function signOut() {
+              var auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                console.log('User signed out.');
+                location.href = "/logout";
+              });
+            }
+          </script>
         </div>
       </div>
     </div>
@@ -152,30 +203,41 @@
   <!-- /# Modal de cuenta modo pago-->
 
   <!-- Contenido Fabuloso nunca infabuloso-->
-  <div class="contenido" id=particles-js>
+  <div class="contenido" id="particles-js" style="background:#68d47c; overflow: auto;">
     <img src="img/Picture1.png" alt="" width="72" height="72" class="menu-bar">
-    <h1 id="bienvenida" class="bienvenida">Bienvenido {{nombre}} </h1>
+    <h1 id="bienvenida">Bienvenido {{nombre}} </h1>
+    <div class="proyectos row " id="proyectos" class="proj">
+    </div>
 
 
   </div>
   <!-- /#Contenido Fabuloso nunca infabuloso-->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <!-- 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-<script src="jQuery/jquery-3.4.0.min.js"></script>
-<script src="js/controlador-registro.js"></script>
+  <script src="js/jquery-3.4.0.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/controlador-carpeta.js"></script>
+  <script src="js/controlador-proyectos.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/particulas.js"></script>
   <script src="jQuery/Inicio.js"></script>
 
+  {{!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-10 col-12">
+    <div class="tarjeta">
+      <div class="card text-white bg-dark">
+        <div class="card-body">
+          <p class="card-text">
+            ${respuesta.carpetas[i].descripcion}
+          </p>
+          <a href="/carpetas/${respuesta.carpetas[i]._id}" class="btn btn-secondary btn-block"
+            style="text-align: left;">
+            <h5 class="card-title"> ${respuesta.carpetas[i].nombre}</h5>
+            Editar...
+          </a>
 
+        </div>
+      </div>
+    </div>
+  </div> --}}
 </body>
 
 </html>

@@ -1,27 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Inicio de Sesión</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/floating-labels/">
+  <title>Inicio Sesión</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/estilos.css">
-  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-  <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- Custom styles for this template -->
-  <link href="floating-labels.css" rel="stylesheet">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id"
+    content="261033829274-ian1d7p7sckvkt2cpas78pj23qoatfub.apps.googleusercontent.com">
 </head>
 
 <body>
 
-  <form id="formulario-login" class="form-box animated bounce">
-
-    <img class="" src="img/Picture1.png" alt="" width="72" height="72">
+  <form id="formulario-login" class="form-box animated bounce" autocomplete="off">
+    <img class="" src="img/Picture1.png" alt="" width="82 " height="82">
     <br>
     <h1 class="form-title">Ingreso a CODE 3</h1>
     <input id="correo" type="text" placeholder="Correo" autofocus>
@@ -29,18 +24,31 @@
     <button type="submit">
       Login
     </button>
-    <a class="colorLink" href="/register" target="_blank" rel="noopener noreferrer">Registrarse</a>
+    <div class="g-signin2" data-onsuccess="onSignIn" style="padding-left:28%; padding-botom:5px; padding-bottom: 8px;"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          location.href = "/logout";
+        });
+      }
+    </script>
+    <a class="colorLink" href="registro" target="_blank" rel="noopener noreferrer">Registrarse</a>
+    <br>
+    <br>
     <div class="alert alert-danger" role="alert" id="alerta">
-      correo o contraseña incorrecta
+      Correo o contraseña incorrecta
     </div>
   </form>
 
   <script src="jQuery/jquery-3.4.0.min.js"></script>
+  <link rel="stylesheet" href="js/bootstrap.min.js">
   <script src="js/controlador-registro.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  {{!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-    crossorigin="anonymous"></script>
-
+    crossorigin="anonymous"></script> --}}
 </body>
 
 </html>

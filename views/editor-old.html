@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editor CODE3</title>
+ 
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></head>
+    <!-- Kim CSS -->   
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<body>
+    
+    <nav class="nav">
+        <div>
+            <div style="width: auto"><img  src="img/Picture1.png" alt="" width="72" height="72"></div>
+            <div style=" padding: 20px;"><span>nombre proyecto</span>
+                <span>usuario</span>
+            </div>
+        </div>
+        <div> <br>
+        </div>
+        <div>     
+                
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-hand-point-left"></i> Regresar</button>     
+            <button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-share-alt"></i> Compartir</button>
+            <button type="button" class="btn btn-secondary btn-sm "><i class="fas fa-cloud"></i> Guardar</button>
+        </div>    
+    </nav>
+    <!-- Modal Agregar Proyecto-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+     <!-- /#Modal Agregar Proyecto-->
+    <hr class="separador">
+    <main>
+            <div class="columna">
+                <h4 style="text-align: center; border-radius: 10px; background-color: #444;">HTML</h4>
+                <textarea class="edit "></textarea>
+            </div>
+            <div class="columna">
+                <h4 style="text-align: center; border-radius: 10px; background-color: #444;">CSS</h4>
+                <textarea class="edit "></textarea>
+            </div>
+            <div class="columna">
+                <h4 style="text-align: center; border-radius: 10px; background-color: #444;">JS</h4>
+                <textarea class="edit "></textarea>
+            </div>
+            
+    </main>
+    
+    <footer><h5 class="small">Copyright &copy; CODE 3 2019<br> </h5></footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   
+</body>
+</html>
