@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 
 var esquema = new mongoose.Schema({
-  archivos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Archivo" }],
-  carpetas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Carpeta" }],
-  proyectos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Proyecto" }],
+  // archivos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Archivo" }],
+  // carpetas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Carpeta" }],
+  // proyectos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Proyecto" }],
   proyectoPadre: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Proyecto"

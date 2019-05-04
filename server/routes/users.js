@@ -153,7 +153,7 @@ router.get("/usuarios",async(req,res)=>{
 router.get("/usuario",verificarAutenticacion,async(req,res)=>{
   let id = req.session._id;
   console.log(id)
-  let usuario =await Usuario.findById(id,{nombre:1,correo:1});
+  let usuario =await Usuario.findById(id,{nombre:1,correo:1,cuenta:1});
   return res.send({
     status:200,
     usuario
@@ -188,6 +188,24 @@ router.put("/actualizar",verificarAutenticacion,async(req,res)=>{
     }
   }
   //return res.send({usuario})
+})
+
+router.post("/actualizarPlan",verificarAutenticacion,async(req,res)=>{
+  let id = req.session._id;
+  let tarjeta = req.body.tarjeta
+  let usuarios = await Usuario.countDocuments({"cuenta.tarjeta":tarjeta})
+  if(usuarios===0){
+    let usuario = await Usuario.findByIdAndUpdate(id,{"cuenta.tarjeta":tarjeta,"cuenta.tipoCuenta":true},{new:true})
+    return res.send({
+      usuario,
+      status:200
+    })
+  }else{
+    return res.send({
+      status:404,
+      mensaje:"Ya existe una cuenta con dicho numero de tarjeta"
+    })
+  }
 })
 
 const mensajes = [

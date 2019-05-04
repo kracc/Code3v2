@@ -5,126 +5,53 @@ const bcryptjs = require("bcryptjs");
 const Archivo = require("../models/archivo");
 const Carpeta = require("../models/carpeta");
 const Usuario = require("../models/usuario");
-const { verificarAutenticacion } = require("./middlewares");
+const { verificarAutenticacion,VerificarPlan } = require("./middlewares");
 
-router.post("/nueva-carpeta", verificarAutenticacion, async (req, res) => {
+
+router.post("/nueva-carpeta",[verificarAutenticacion,VerificarPlan], async (req, res) => {
   var id = req.session._id;
   var nombre = req.body.nombre;
-  var descripcion = req.body.descripcion;
-  var idPadre = req.body.idPadre;
-  console.log(idPadre);
-  let usuario = await Usuario.findById(id, { cuenta: 1 });
-  let carpetasUsuario = await Carpeta.countDocuments({ propietario: id });
+  var proyectoPadre = req.body.proyectoPadre;
+  let archivohtml = new Archivo({contenido: `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+  </head>
+  <body>
+      
+  </body>
+  </html>`, propietario: id});
+let archivocss = new Archivo({contenido: "body{background:green;}", propietario: id});
+let archivojs = new Archivo({contenido: "console.log(' HELLO WORLD')", propietario: id});
+let htmlArchivo = await archivohtml.save();
+let cssArchivo = await archivocss.save();
+let jsArchivo = await archivojs.save();
 
-  if (usuario.cuenta.tipoCuenta == 1) {
-    if (idPadre != undefined) {
-      let carpeta = new Carpeta({
-        nombre: nombre,
-        propietario: id,
-        descripcion: descripcion,
-        carpetaPadre: idPadre
-      });
+  if (proyectoPadre != undefined) {
+    let carpeta = new Carpeta({
+      nombre: nombre,
+      propietario: id,
+      html: htmlArchivo._id,
+      css: cssArchivo._id,
+      js: jsArchivo._id,
+      proyectoPadre
+    });
 
-      let carpetaCreada = await carpeta.save();
-      return res.send({
-        carpeta: carpetaCreada,
-        mensaje: "La carpeta se guardo Exitosamente"
-      });
-    } else {
-      let archivohtml = new Archivo({
-        contenido: `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Document</title>
-        </head>
-        <body>
-            
-        </body>
-        </html>`,
-        propietario: id
-      });
-
-      let archivocss = new Archivo({
-        contenido: "body{background:green;}",
-        propietario: id
-      });
-
-      let archivojs = new Archivo({
-        contenido: "console.log(' HELLO WORLD')",
-        propietario: id
-      });
-
-      let htmlArchivo = await archivohtml.save();
-      let cssArchivo = await archivocss.save();
-      let jsArchivo = await archivojs.save();
-      let carpeta = new Carpeta({
-        nombre: nombre,
-        propietario: id,
-        descripcion: descripcion,
-        html: htmlArchivo._id,
-        css: cssArchivo._id,
-        js: jsArchivo._id
-      });
-      let carpetaCreada = await carpeta.save();
-      return res.send({
-        carpeta: carpetaCreada,
-        mensaje: "La carpeta se guardo Exitosamente"
-      });
-    }
+    let carpetaCreada = await carpeta.save();
+    return res.send({carpeta: carpetaCreada, mensaje: "La carpeta se guardo Exitosamente"});
   } else {
-    if (carpetasUsuario < 3) {
-      let archivohtml = new Archivo({
-        contenido: `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Document</title>
-        </head>
-        <body>
-            
-        </body>
-        </html>`,
-        propietario: id
-      });
-
-      let archivocss = new Archivo({
-        contenido: "body{background:green;}",
-        propietario: id
-      });
-
-      let archivojs = new Archivo({
-        contenido: "console.log(' HELLO WORLD')",
-        propietario: id
-      });
-
-      let htmlArchivo = await archivohtml.save();
-      let cssArchivo = await archivocss.save();
-      let jsArchivo = await archivojs.save();
-      let carpeta = new Carpeta({
-        nombre: nombre,
-        propietario: id,
-        descripcion: descripcion,
-        html: htmlArchivo._id,
-        css: cssArchivo._id,
-        js: jsArchivo._id
-      });
-      let carpetaCreada = await carpeta.save();
-      return res.send({
-        status: 200,
-        carpeta: carpetaCreada,
-        mensaje: "La carpeta se guardo Exitosamente"
-      });
-    }else{
-       return res.send({
-      status:403,
-      mensaje:"No tiene carpetas disponibles para crear"
-    })
-    }
+    let carpeta = new Carpeta({
+      nombre: nombre,
+      propietario: id,
+      html: htmlArchivo._id,
+      css: cssArchivo._id,
+      js: jsArchivo._id
+    });
+    let carpetaCreada = await carpeta.save();
+    return res.send({status: 200, carpeta: carpetaCreada, mensaje: "La carpeta se guardo Exitosamente"});
   }
 });
 

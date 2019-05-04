@@ -11,6 +11,7 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-signin-client_id"
     content="261033829274-ian1d7p7sckvkt2cpas78pj23qoatfub.apps.googleusercontent.com">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <style>
     .img {
       width: 80px;
@@ -22,6 +23,7 @@
 <body>
   <!-- Sidebar -->
   <div class="sidebar">
+    <input type="hidden" id="txtCarpetaId" name="">
     <h2>Menú</h2>
     <ul>
       <!-- ok -->
@@ -56,11 +58,11 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="false">
     <div class="modal-dialog" role="document">
+      
       <div class="modal-content" style="background:green;">
         <div class="modal-header  modalitos">
           <h3 class="modal-title " id="exampleModalLabel" style="color:white; margin-left:29%;">Nuevo proyecto</h3>
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
-
         </div>
         <div class="modal-body  modalitos">
           <form method="POST" id="creare" autocomplete="off">
@@ -69,14 +71,12 @@
                 class="form-control nombre" id="validationDefault01 recipient-name " placeholder="Nombre">
             </div>
             <div class="form-group">
-
-
-              <textarea name="descripcion" class="form-control yo descripcion" id="validationDefault02 message-text"
+              <textarea name="descripcion" class="form-control yo descripcion" id="message-text"
                 placeholder="Descripción" style="resize: none; text-align:center; color:white;"></textarea>
             </div>
             <div class="modal-footer  modalitos">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success">Agregar</button>
+              <button type="submit" form="creare" class="btn btn-success">Agregar</button>
             </div>
           </form>
         </div>
@@ -94,20 +94,21 @@
           <h3 class="modal-title" id="exampleModalLabel2-1" style="color:white; margin-left:29%;">Actulizar cuenta</h3>
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
         </div>
-        <div class="modal-body  modalitos">
-          <form autocomplete="off">
+        <div class="modal-body  modalitos " id="configurarCuenta" >
+          <form autocomplete="off" id="form-cuenta">
             <div class="form-group">
               <img src="img/Visa-MasterCard-1024x393.png" style="margin-left:29%">
               <p style="color:antiquewhite">Actualmente tiene una cuenta tipo libre para cambiar esto puede pasar a la
                 version de premium por un modico precio de $ 20.00</p>
-              <input type="text" style="text-align:center; color:white;" class="form-control" id="recipient-name"
-                placeholder="Ingrese el numero de su tarjeta" autofocus>
+              <input type="text" style="text-align:center; color:white;" class="form-control" id="txtTarjeta"
+                placeholder="Ingrese el numero de su tarjeta" required>
+              
             </div>
           </form>
         </div>
         <div class="modal-footer  modalitos">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No gracias</button>
-          <button type="button" class="btn btn-success">Toma mi dinero</button>
+          <button type="button" id="cerrar" class="btn btn-secondary" data-dismiss="modal">No gracias</button>
+          <button id="guardarCuenta"  class="btn btn-success" >Toma mi dinero</button>
         </div>
       </div>
     </div>
@@ -125,10 +126,10 @@
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
         </div>
         <div class="modal-body  modalitos">
-          <form autocomplete="off" id="form-actualizar" >
+          <form autocomplete="off" id="form-actualizar">
             <div class="form-group group">
               <input type="text" id="nombreUsuario" name="nombre" placeholder="Nombre Usuario">
-              <input type="text" id="correoUsuario" name="correo" placeholder="Correo">
+              <input type="email" id="correoUsuario" name="correo" placeholder="Correo">
               <input type="password" id="contrasenaActual" name="contrasenaActual" placeholder="Contraseña actual">
               <input type="password" id="contrasenaNueva" name="nuevaContrasena" placeholder="Nueva contraseña">
             </div>
@@ -136,7 +137,7 @@
         </div>
         <div class="modal-footer  modalitos">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-          <button type="button" id="actualizar" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+          <button type="button" id="actualizar"  class="btn btn-success" data-dismiss="modal">Aceptar</button>
         </div>
       </div>
     </div>
@@ -161,7 +162,7 @@
           </form>
         </div>
         <div class="modal-footer  modalitos">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Actualizar</button>
+          <button type="button"  class="btn btn-success" data-dismiss="modal">Actualizar</button>
         </div>
       </div>
     </div>
@@ -205,14 +206,15 @@
   <!-- Contenido Fabuloso nunca infabuloso-->
   <div class="contenido" id="particles-js" style="background:#68d47c; overflow: auto;">
     <img src="img/Picture1.png" alt="" width="72" height="72" class="menu-bar">
+   
+   <button type="button" id="guardar" class="btn btn-success" style="border-radius: 100%; margin:6px;"><i class="fas fa-plus"></i></button>
+   
     <h1 id="bienvenida">Bienvenido {{nombre}} </h1>
     <div class="proyectos row " id="proyectos" class="proj">
     </div>
-
-
   </div>
-  <!-- /#Contenido Fabuloso nunca infabuloso-->
-
+  <!-- /# Contenido Fabuloso nunca infabuloso-->
+  <!-- /# Modales -->
   <script src="js/jquery-3.4.0.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/controlador-carpeta.js"></script>

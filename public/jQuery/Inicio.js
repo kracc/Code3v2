@@ -36,4 +36,17 @@ $('<a class ="delLista" id="modal2" href="#exampleModa2-2" data-toggle="modal" d
 
 //index
 
-//fin index
+//validar actualizar
+
+$('#actualizar').on('click', function(){
+
+    if ($('#nombreUsuario').val().length == 0) {
+        alert('Ingrese rut');
+        return false;
+      }  
+    if ($('#correoUsuario').val().length == 0) {
+    alert('Ingrese rut');
+    return false;
+  }
+    
+});

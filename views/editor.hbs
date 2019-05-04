@@ -15,6 +15,7 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <style>
     body {
       margin: 0;
@@ -71,6 +72,7 @@
         height: 30px;
         background: #44475a;
         color: white;
+        padding: 10px;
       }
 
       #bb:hover {
@@ -143,6 +145,7 @@
       height: 30px;
       background: #44475a;
       color: white;
+      margin: 3px;
     }
 
     .bb input:focus {
@@ -177,6 +180,13 @@
       box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px green !important;
       outline: 0 none;
     }
+    .modal-dialog{
+      background: #3a4a4a;
+      color: white;
+    }
+    body{
+
+    }
   </style>
 </head>
 
@@ -184,8 +194,9 @@
 
   <nav id="titulo" style="height:80px;">
     <div style="width: 100%; padding: 0%; margin: 0%; padding-top: 10px; padding-left: 10px;color:rgb(19, 250, 50);">
-      <button type="button" id="compartir" class="bb" data-toggle="modal" data-target="#exampleModal">Compartir</button>
-      <button type="button" id="guardar" class="bb">guardar</button>
+      <button type="button" id="compartir" class="bb" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-share-alt"Compartir></i></button>
+      <button type="button" id="guardar" class="bb"><i class="fas fa-save"></i></button>
+      <button type="button" id="Descargar" class="bb"><i class="fas fa-download"></i></button>
       <input id="idCarpeta" type="hidden" value="{{idCarpeta}}">
       <input id="idhtml" type="hidden">
       <input id="idcss" type="hidden">
@@ -202,14 +213,14 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content" style="background:gray;">
-        <div class="modal-header" style="background:gray;">
+      <div class="modal-content" style="">
+        <div class="modal-header" style="background:#3a4a4a;">
           <h5 class="modal-title" id="exampleModalLabel">Compartir</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close btn-secondary" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" style="background:gray;" id="usuariosCompartir">
+        <div class="modal-body" style="background:g#3a4a4aray;" id="usuariosCompartir">
           <table class="table table-striped">
             <thead>
               <tr>
@@ -221,10 +232,9 @@
             <tbody id="usuarios"></tbody>
           </table>
         </div>
-        <div class="modal-footer" style="background:gray; color:green;">
-          <button type="button" id="cerrarModal" class="btn btn-secondary" style="background:#282a36;"
+        <div class="modal-footer" style="background:#3a4a4a; color:green;">
+          <button type="button" id="cerrarModal" class="btn btn-success" style="background:#3a4a4a!important;"
             data-dismiss="modal">Cerrar</button>
-
         </div>
       </div>
     </div>
@@ -238,8 +248,6 @@
   </div>
 
   <iframe id="result" frameborder="0"></iframe>
-
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js" type="text/javascript"></script>
   <script>
@@ -301,5 +309,4 @@
     crossorigin="anonymous"></script>
   <script src="js/controlador-editor.js"></script>
 </body>
-
 </html>

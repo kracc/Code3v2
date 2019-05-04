@@ -1,31 +1,80 @@
 const express = require("express");
 const router = express.Router();
 const Proyecto = require("../models/proyecto");
-const Usuario = require("../models/usuario")
+const Usuario = require("../models/usuario");
+const Carpeta = require("../models/carpeta");
 const {verificarAutenticacion} = require("./middlewares")
 //Obtener proyectos (carpetas) en la raiz
-router.get("/proyectos",verificarAutenticacion, async (req, res) => {
-  let id = req.session_id;
+router.post("/proyectos",verificarAutenticacion, async (req, res) => {
+  let id = req.session._id;
+  let proyectoPadre = req.body.proyectoPadre
 
-  let proyectos = await Proyecto.find({
-    $and: [
-      { propietario: id },
-      { estado: true },
-      { proyectoPadre: { $exists: false } }
-    ]
-  });
-  if (proyectos.length === 0) {
-    return res.send({
-      mensaje: "No se han encontrado capetas",
-      status: 404,
-      proyectos
+  if(proyectoPadre==undefined){
+    console.log(proyectoPadre);
+    let proyectos = await Proyecto.find({
+      $and: [
+        {
+          propietario: id
+        }, {
+          estado: true
+        }, {
+          proyectoPadre: {
+            $exists: false
+          }
+        }
+      ]
     });
+
+    let carpetas = await Carpeta.find({
+      $and: [
+        {
+          propietario: id
+        }, {
+          estado: true
+        }, {
+          proyectoPadre: {
+            $exists: false
+          }
+        }
+      ]
+    })
+
+      return res.send({
+        status:200,
+        proyectos,
+        carpetas
+      })
+  }else{
+    let proyectos = await Proyecto.find({
+      $and: [
+        { propietario: id },
+        { estado: true },
+        {proyectoPadre}
+      ]})
+      let carpetas = await Carpeta.find({
+        $and: [
+          { propietario: id },
+          { estado: true },
+          {proyectoPadre}
+        ]})
+      return res.send({
+        status:200,
+        proyectos,
+        carpetas
+      })
   }
-  return res.send({
-    mensaje: "No se han encontrado capetas",
-    status: 200,
-    proyectos
-  });
+  // if (proyectos.length === 0) {
+  //   return res.send({
+  //     mensaje: "No se han encontrado capetas",
+  //     status: 404,
+  //     proyectos
+  //   });
+  // }
+  // return res.send({
+  //   mensaje: "No se han encontrado capetas",
+  //   status: 200,
+  //   proyectos
+  // });
 });
 
 //Crear variable de session de idProyectos
@@ -72,13 +121,13 @@ router.get("/proyecto",verificarAutenticacion, async (req, res) => {
 router.post("/proyecto",verificarAutenticacion, async (req, res) => {
   let nombre = req.body.nombre;
   let propietario = req.session._id;
-  let idProyectoPadre = req.body.idProyectoPadre;
-  if (idProyectoPadre != undefined) {
+  let proyectoPadre = req.body.proyectoPadre;
+  if (proyectoPadre != undefined) {
     let nuevoProyecto = new Proyecto({
       nombre,
-      propietario
+      propietario,
+      proyectoPadre
     });
-
     let proyecto = await nuevoProyecto.save();
 
     return res.send({
@@ -88,8 +137,7 @@ router.post("/proyecto",verificarAutenticacion, async (req, res) => {
   } else {
     let nuevoProyecto = new Proyecto({
       nombre,
-      propietario,
-      proyectoPadre: idProyectoPadre
+      propietario
     });
 
     let proyecto = await nuevoProyecto.save();
