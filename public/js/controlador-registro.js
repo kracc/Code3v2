@@ -89,9 +89,9 @@ $.ajax({
     dataType:"json",
     success:function(respuesta){
         //console.log(respuesta)
-        // if (respuesta.status === 200) {
-        //     location.href = "/dashboard";
-        //   }
+        if (respuesta.status === 200) {
+            location.href = "/dashboard";
+          }
           if (respuesta.status === 400) {
             location.href = "/login";
           }
@@ -101,7 +101,6 @@ $.ajax({
           if (respuesta.status === 500) {
             location.href = "/";
           }
-          
     }
 })
 }

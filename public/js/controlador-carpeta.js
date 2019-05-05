@@ -37,7 +37,9 @@ $("#creare").submit(function(e) {
       <h4>${respuesta.carpeta.nombre}</h4>
     </div>
   </div>      
-  </div>`);
+  </div>`
+  );
+  $('#exampleModal').modal('toggle');
       }
       if (respuesta.status === 404) {
         console.log("mal -_-");
@@ -88,9 +90,9 @@ $("#nuevaCarpeta").submit(function(e) {
       <h4>${respuesta.proyecto.nombre}</h4>
     </div>
   </div>      
-  </div>`)
-        $("#nuevaCarpeta").reset();
-        $("#NuevaCarpeta").modal("hide");
+  </div>`);
+        $('#NuevaCarpeta').modal('toggle');
+        $('#bienvenida').hide('#bienvenida');
       }
       if (respuesta.status === 404) {
         console.log("mal -_-");
@@ -245,6 +247,9 @@ $("#guardarCuenta").click(function () {
         `);
         $("#cerrar").text("Cerrar");
         $("#guardarCuenta").hide();
+      }
+      if(respuesta.status === 404){
+        alert("Ya existe una cuenta vinculada con esta tarjeta")
       }
     }
   });

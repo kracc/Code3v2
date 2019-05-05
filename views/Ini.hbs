@@ -18,6 +18,15 @@
       width: 80px;
       height: 80px;
     }
+    a:hover{
+      color:white;
+    }
+    .cerrar{
+      color:white;
+    }
+.proyectos{
+  position: absolute
+}
   </style>
 </head>
 
@@ -34,12 +43,12 @@
       <li class=""><a class="delLista" id="modal1" href="#exampleModal" data-toggle="modal"
           data-target="#exampleModal">Crear</a></li>
       <!-- no ok -->
-      <li class=""><a class="delLista" id="enlace-proyectos">Proyectos</a></li>
+      <li class=""><a class="delLista" id="enlace-proyectos">Mi unidad</a></li>
       <!-- no ok -->
       <li class=""><a class="delLista" id="enlace-p">Compartidos</a></li>
       <!-- no ok -->
       <li class=""><a class="delLista" id="modal4" href="#exampleModal4" data-toggle="modal"
-          data-target="#exampleModal4">Perfil</a></li>
+          data-target="#exampleModal4">Administrar perfil</a></li>
       <!-- no ok -->
       <li class=""><a class="delLista" id="modal2" href="#exampleModa2-1" data-toggle="modal"
           data-target="#exampleModa2-1">Cuenta</a></li>
@@ -55,7 +64,7 @@
   <!-- /#sidebar-wrapper -->
 
   <!-- Modales -->
-  <!--formulario agregar proyecto-->
+  <!--formulario agregar en unidad-->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="false">
     <div class="modal-dialog" role="document">
@@ -70,10 +79,6 @@
             <div class="form-group">
               <input type="text" name="nombre" id="nombre" style="text-align:center; color:white;"
                 class="form-control nombre" id="validationDefault01 recipient-name " placeholder="Nombre">
-            </div>
-            <div class="form-group">
-              <textarea name="descripcion" class="form-control yo descripcion" id="message-text"
-                placeholder="Descripción" style="resize: none; text-align:center; color:white;"></textarea>
             </div>
             <div class="modal-footer  modalitos">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -216,17 +221,7 @@
         </div>
         <div class="modal-footer  modalitos">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No aún no</button>
-          <button type="button" class="btn btn-success"><a href="/logout">Cerrar Sesión</a> </button>
-          <a onclick="signOut();">Sign out</a>
-          <script>
-            function signOut() {
-              var auth2 = gapi.auth2.getAuthInstance();
-              auth2.signOut().then(function () {
-                console.log('User signed out.');
-                location.href = "/logout";
-              });
-            }
-          </script>
+          <button type="button" class="btn btn-success"><a class="cerrar" href="/logout">Cerrar Sesión</a> </button>
         </div>
       </div>
     </div>

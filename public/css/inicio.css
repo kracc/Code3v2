@@ -101,6 +101,10 @@ left: 0;
 z-index: 1;
 }
 
+@media (min-width: 700px) {
+    .centro{width: 300px}
+    }
+
 .bienvenida{
     visibility: hidden;
 }
