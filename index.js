@@ -45,7 +45,7 @@ app.use(require('./server/routes/rutas'));
 require('./server/database')
 
 //Levantar el servidor en el puerto 3333
-app.listen(3333, function(){
+app.listen(port, function(){
     console.log("Servidor levantado en el puerto " + port);
     //console.log(pathServer);
 })
