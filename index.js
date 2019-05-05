@@ -10,6 +10,8 @@ var expressSession = require('express-session');
 var mongoose =require('mongoose');
 //path
 const path =require('path');
+
+const morgan = require('morgan');
 // Handlebar
 // const handlebars = require('express-handlebars');
 const port = process.env.PORT || 3333
@@ -33,7 +35,7 @@ app.use(expressSession({
     saveUninitialized:true
 }));
 
-
+app.use(morgan('dev'));
 //routes
 app.use(require('./server/routes/rutas'));
 
