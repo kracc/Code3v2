@@ -3,13 +3,22 @@ Luego de descargar el proyecto ejecutar
 npm install
 
 ¿Cómo funciona Code3?
-la primera pantalla es de bienvenida mostrara el nombre del usuario si un usuario libre podra crear cuantas carpetas desee con el boton 
-"suma" sin embargo no podra añadir más de tres proyectos es decir la colección de los 3 archivos (HTML, CSS, JS), el usuario premiun si podra
-crear cuantos desee.
+Los usuarios podran registrarse con su correo particular o bien con su cuenta google esta permanecera abiertra mientras se este logeado con google en el navegador.
 
-Code  tres tiene seguridad en las rutas si el usuario no esta logeado no podra accedder a al editor o al dashboard.
+La primera pantalla es de bienvenida mostrara el nombre del usuario si es un usuario libre podra crear cuantas carpetas desee con el boton 
+"suma" sin embargo no podra añadir más de tres proyectos es decir la colección de los 3 archivos (HTML, CSS, JS), el usuario premiun si podra crear cuantos proyectos y carpetas desee.
 
 Las diferencias entre proyecto y carperta que es los proyectos se crean desde el side ¿bar las carpetas se crean desde el boton de suma que esta a la ppar de boton de abrir el side. Ademas las carpetas pueden contener mas y varios proyectos, mientras que los proyectos son para crer los archivos (activar el editor).
+
+la Administracion de usuario es el formulario donde podra editar las credenciales sin embargo para que funcione debe ingresar la comntrase;a
+
+Todos los usuarios pueden compartir proyectos entre ellos desde el editor, entonces aparecera en la seccion de comportatidos (side bar), a quien se hayan compartido. 
+
+Los pagos funcionan de la forma "una vez pagado no debe seguir pagando". 
+
+Code tres tiene seguridad en las rutas si el usuario no esta logeado no podra acceder al editoro al dashboard.
+
+
 
 Base en Atlas Mongo db, y aplicativo en Heroku
 https://code3v2.herokuapp.com/
