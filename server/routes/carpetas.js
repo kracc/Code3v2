@@ -41,7 +41,7 @@ let jsArchivo = await archivojs.save();
     });
 
     let carpetaCreada = await carpeta.save();
-    return res.send({carpeta: carpetaCreada, mensaje: "La carpeta se guardo Exitosamente"});
+    return res.send({carpeta: carpetaCreada, mensaje: "La carpeta se guardo Exitosamente",status:200});
   } else {
     let carpeta = new Carpeta({
       nombre: nombre,

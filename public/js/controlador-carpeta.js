@@ -12,7 +12,6 @@ $("#creare").submit(function(e) {
   if(proyectoPadre==""){
     proyectoPadre=undefined
   }
-
   //console.log(proyectoPadre);
   var datos = {
     //   clave:valor
@@ -20,7 +19,6 @@ $("#creare").submit(function(e) {
     proyectoPadre
     //descripcion: descripcion
   };
-  console.log(datos);
   $.ajax({
     url: "/nueva-carpeta",
     data: datos,
@@ -29,9 +27,17 @@ $("#creare").submit(function(e) {
     success: function(respuesta) {
       console.log(respuesta);
       if (respuesta.status === 200) {
-        console.log(respuesta);
-        $("#creare").reset();
-        $("#exampleModal").modal("hide");
+        $("#proyectos").append(
+          /* html */
+          ` <div class="col-xl-3 col-lg-3 col-md-6 col-sm-10 col-12">
+            <div class="card tarjetas" style="width: 15rem; height: 15rem;">
+              <a><img idCarpeta="${respuesta.carpeta._id}" class="imagen card-img-top archivo" src="img/carpeta.png" alt="..."/></a>
+            <div class="card-body scroll"
+      style="overflow-y: hidden; padding-top: 0; overflow-y: auto;">
+      <h4>${respuesta.carpeta.nombre}</h4>
+    </div>
+  </div>      
+  </div>`);
       }
       if (respuesta.status === 404) {
         console.log("mal -_-");
@@ -44,7 +50,59 @@ $("#creare").submit(function(e) {
       }
     }
   });
-  console.log(descripcion);
+});
+
+$("#nuevaCarpeta").submit(function(e) {
+  e.preventDefault();
+  var nombre = $("#nombreCarpeta").val();
+  var proyectoPadre = $("#txtCarpetaId").val()
+
+  if(proyectoPadre==""){
+    proyectoPadre=undefined
+  }
+
+  //console.log(proyectoPadre);
+  var datos = {
+    //   clave:valor
+    nombre: nombre,
+    proyectoPadre
+    //descripcion: descripcion
+  };
+  console.log(datos);
+  $.ajax({
+    url: "/proyecto",
+    data: datos,
+    dataType: "json",
+    method: "POST",
+    success: function(respuesta) {
+      console.log(respuesta);
+      if (respuesta.status === 200) {
+        console.log(respuesta);
+        $("#proyectos").append(
+          /* html */
+          ` <div class="col-xl-3 col-lg-3 col-md-6 col-sm-10 col-12">
+            <div class="card tarjetas" style="width: 15rem; height: 15rem;">
+              <a><img idCarpeta="${respuesta.proyecto._id}" class="imagen card-img-top proyecto" src="img/f2.png" onclick="cargarProyectos('${respuesta.proyecto._id}')" alt="..."/></a>
+            <div class="card-body scroll"
+      style="overflow-y: hidden; padding-top: 0; overflow-y: auto;">
+      <h4>${respuesta.proyecto.nombre}</h4>
+    </div>
+  </div>      
+  </div>`)
+        $("#nuevaCarpeta").reset();
+        $("#NuevaCarpeta").modal("hide");
+      }
+      if (respuesta.status === 404) {
+        console.log("mal -_-");
+      }
+      if(respuesta.status===403){
+        $("#exampleModal").append(
+       ` <div class="alert alert-danger" style ="text-align: center;" role="alert">
+          Para continuar actualice a premium.
+        </div>`);
+      }
+    }
+  });
 });
 
 function cargarCarpetas() {
@@ -201,11 +259,11 @@ function configurarCuenta() {
       console.log(respuesta);
       if (respuesta.usuario.cuenta.tipoCuenta) {
         console.log("aqui estoy");
+        $("#cuentaMensaje").text("")
         $("#configurarCuenta").html("");
         $("#configurarCuenta").append(
         /* html */
         `<div class="form-group">
-          <img src="img/Visa-MasterCard-1024x393.png" style="margin-left:29%">
           <p style="color:antiquewhite">Actualmente tienes una cuenta tipo premium puedes relajarte y programar un poco. Gracias por apoyar este proyecto</p>
         </div>
         `);

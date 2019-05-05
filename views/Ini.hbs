@@ -85,13 +85,42 @@
   </div>
   <!--/#formulario agregar proyecto-->
 
+
+    <!--formulario agregar carpeta-->
+  <div class="modal fade" id="NuevaCarpeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="false">
+    <div class="modal-dialog" role="document">
+      
+      <div class="modal-content" style="background:green;">
+        <div class="modal-header  modalitos">
+          <h3 class="modal-title " id="exampleModalLabel" style="color:white; margin-left:29%;">Nueva carpeta</h3>
+          <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
+        </div>
+        <div class="modal-body  modalitos">
+          <form method="POST" id="nuevaCarpeta" autocomplete="off">
+            <div class="form-group">
+              <input type="text" name="nombre" id="nombreCarpeta" style="text-align:center; color:white;"
+                class="form-control nombre" id="validationDefault01 recipient-name " placeholder="Nombre">
+            </div>
+            <div class="modal-footer  modalitos">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" form="nuevaCarpeta" class="btn btn-success">Agregar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/#formulario agregar carpeta-->
+
+
   <!-- Modal de cuenta cuando esta modo free -->
-  <div class="modal fade oculto" id="exampleModa2-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2-1"
+  <div class="modal fade oculto" id="exampleModa2-1" tabindex="-1" role="dialog" aria-labelledby="cuentaMensaje"
     aria-hidden="false">
     <div class="modal-dialog" role="document">
       <div class="modal-content" style="background:green;">
         <div class="modal-header  modalitos">
-          <h3 class="modal-title" id="exampleModalLabel2-1" style="color:white; margin-left:29%;">Actulizar cuenta</h3>
+          <h3 class="modal-title" id="cuentaMensaje" style="color:white; margin-left:29%;">Actulizar cuenta</h3>
           <hr style="border: 0; height: 0; box-shadow: 0 1px 5px 1px green;">
         </div>
         <div class="modal-body  modalitos " id="configurarCuenta" >
@@ -207,7 +236,8 @@
   <div class="contenido" id="particles-js" style="background:#68d47c; overflow: auto;">
     <img src="img/Picture1.png" alt="" width="72" height="72" class="menu-bar">
    
-   <button type="button" id="guardar" class="btn btn-success" style="border-radius: 100%; margin:6px;"><i class="fas fa-plus"></i></button>
+   <button type="button"  id="guardar" href="#NuevaCarpeta" data-toggle="modal"
+          data-target="#NuevaCarpeta"  class="btn btn-success" style="border-radius: 100%; margin:6px;"><i class="fas fa-plus"></i></button>
    
     <h1 id="bienvenida">Bienvenido {{nombre}} </h1>
     <div class="proyectos row " id="proyectos" class="proj">

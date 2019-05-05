@@ -12,6 +12,7 @@ var mongoose =require('mongoose');
 const path =require('path');
 // Handlebar
 // const handlebars = require('express-handlebars');
+const port = process.env.PORT || 3333
 const hbs = require("hbs");
 bodyParser  = require("body-parser"),
 methodOverride = require("method-override");
@@ -43,7 +44,7 @@ require('./server/database')
 
 //Levantar el servidor en el puerto 3333
 app.listen(3333, function(){
-    console.log("Servidor levantado en el puerto 3333");
+    console.log("Servidor levantado en el puerto " + port);
     //console.log(pathServer);
 })
 
