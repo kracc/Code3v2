@@ -2,6 +2,8 @@
 Luego de descargar el proyecto ejecutar
 npm install
 
+Finalidad: Code 3 es un editor de codigo Html, Css, y JS, puede compartir y guardar lo  proyectos ceados.  
+
 ¿Cómo funciona Code3?
 Los usuarios podran registrarse con su correo particular o bien con su cuenta google esta permanecera abiertra mientras se este logeado con google en el navegador.
 
