@@ -21,7 +21,7 @@
     "express-validator": "^5.3.1",
     "google-auth-library": "^3.1.2",
     "hbs": "^4.0.4",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.5.1",
     "morgan": "^1.9.1",
